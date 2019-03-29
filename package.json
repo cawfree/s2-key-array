@@ -1,6 +1,6 @@
 {
   "name": "s2-key-array",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Convert an S2 geolocation vector into a numeric array with a smaller footprint, and vice-versa.",
   "main": "index.js",
   "scripts": {
