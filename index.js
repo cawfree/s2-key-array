@@ -67,9 +67,10 @@ const latLngToCoefficients = (latitude, longitude) => {
 };
 
 // XXX: Converts an integer array of S2 coefficients back
-//      into the equivalent S2 string. The returned array
-//      contains all S2 keys, where the index is equal to
-//      the corresponding S2 level of the original geopoint.
+//      into an array of the  equivalent S2 strings.
+//      The returned array contains all S2 keys, where the
+//      index is equal to the corresponding S2 level of
+//      the original geopoint, minus one.
 
 const coefficientsToS2 = (coeff) => {
   const f = coeff[0];
