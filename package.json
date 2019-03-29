@@ -1,0 +1,36 @@
+{
+  "name": "s2-key-array",
+  "version": "1.0.0",
+  "description": "Convert an S2 geolocation vector into a numeric array with a smaller footprint, and vice-versa.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel index.js -o out.js && node ./index.js ; rm -rf ./out.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Cawfree/s2-key-array.git"
+  },
+  "keywords": [
+    "s2",
+    "key",
+    "array",
+    "S2",
+    "minimize",
+    "compress",
+    "geolocation",
+    "latitude",
+    "longitude",
+    "mgrs"
+  ],
+  "author": "Alexander Thomas (@cawfree)",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Cawfree/s2-key-array/issues"
+  },
+  "homepage": "https://github.com/Cawfree/s2-key-array#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1"
+  }
+}
