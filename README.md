@@ -2,10 +2,10 @@
 Convert an S2 geolocation vector into a numeric array with a smaller footprint, and vice-versa.
 
 ## 🚀 Installing
-Using [`npm`]:
+Using [npm]():
 `npm install s2-key-array`
 
-Using [`yarn`]:
+Using [yarn]():
 `yarn add s2-key-array`
 
 ## 🔧 Purpose
@@ -20,12 +20,12 @@ This library exploits the inherent redundancy in S2, whereby each level is compr
 
 This returns an integer array of length 31, where:
   - `[0]` is the **face** of the S2 key
-  - `[1 : 15]` are the 15 most significant digits of the S2 key
-  - `[16 : 30]` are the 15 least significant digits of the S2 key
+  - `[1 : 15]` are the **15** most significant digits of the S2 key
+  - `[16 : 30]` are the **15** least significant digits of the S2 key
 
 When we refer to "digits", we are using the convention that the position data of the S2 key is coerced into a zero-padded string of length `15`.
 
-As an example, let's take `latititude` `37.4231492`, `longitude `-122.0844212`. Each level expressed using conventional S2 looks like as follows:
+As an example, let's take `latititude` `37.4231492`, `longitude` `-122.0844212`. Each level expressed using conventional S2 looks like as follows:
 
 ```
 [
@@ -62,7 +62,9 @@ As an example, let's take `latititude` `37.4231492`, `longitude `-122.0844212`. 
 ]
 ```
 
-That's a lot of redundancy! The resulting coefficients of a call to `latLngToCoefficients` yields the integer array:
+That's a lot of redundancy!
+
+The resulting coefficients of a call to `latLngToCoefficients` yields the integer array:
 
 ```
 [
@@ -99,7 +101,24 @@ That's a lot of redundancy! The resulting coefficients of a call to `latLngToCoe
   31033220100031,
 ]
 ```
-Notice, although we're now using integers, it is perfectly possible to index against this data and reconstruct the original information without error. This can be achieved using the `coefficientsToS2` function, also exported by this module.
+Notice, although we're now using integers, it is perfectly possible to index against this data and reconstruct the original information without error.
+
+## 🔄 coefficientsToS2(coeff)
+
+Converts an array of integer S2 coefficients into an array of the corresponding string representation in the "standard" S2 format.
+
+```
+const { S2 } = require('s2-geometry');
+const {
+  latLngToCoefficients,
+  coefficientsToS2,
+} = require('s2-key-array');
+
+const original = S2.latLngToKey(0, 0, 30);
+const equivalent = coefficientsToS2(latLngToCoefficients(0,0))[30];
+
+console.log(`Do pigs fly? ${!(original === equivalent)}`);
+```
 
 ## ✌️ Credits
 This tool wouldn't have been possible without the awesome [s2-geometry]() package.
